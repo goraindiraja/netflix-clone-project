@@ -1,10 +1,11 @@
 import React from 'react'
 import DefaultLayout from '../../components/Layouts/DefaultLayout'
+import Jumbotron from '../../components/modules/Jumbotron'
 
 const Landing = () => {
   return (
     <DefaultLayout>
-        <h1 className='font-bold text-3xl'>Ini Halaman Landing Page</h1>
+        <Jumbotron/>
     </DefaultLayout>
   )
 }
