@@ -1,9 +1,10 @@
 import React from 'react'
-import EachUtils from '../../../utils/EachUtils'
-import {LIST_CTA_EN, LIST_CTA_ID} from '../../../constants/listCTA'
+import EachUtils from '@/utils/EachUtils'
+import DefaultButton from '@mods/DefaultButton'
+
 import { useAtom } from 'jotai'
-import { languageAtom } from '../../../jotai/atoms'
-import DefaultButton from '../DefaultButton'
+import { languageAtom } from '@/jotai/atoms'
+import { LIST_CTA_EN, LIST_CTA_ID } from '@/constants/listCTA'
 
 const InputMembership = () => {
     const [language] = useAtom(languageAtom)

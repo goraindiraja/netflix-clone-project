@@ -1,6 +1,5 @@
-import React from 'react'
-import OptionLanguage from '../../components/modules/OptionLanguage'
-import DefaultButton from '../../components/modules/DefaultButton'
+import DefaultButton from '@mods/DefaultButton'
+import OptionLanguage from '@mods/OptionLanguage'
 import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {

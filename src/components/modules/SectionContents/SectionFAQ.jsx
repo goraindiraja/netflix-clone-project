@@ -1,15 +1,17 @@
+import React from 'react'
+import EachUtils from '@/utils/EachUtils'
+import InputMembership from '@mods/InputMembership'
+
 import { useAtom } from 'jotai'
-import { languageAtom } from '../../../jotai/atoms'
-import {FAQ_TITLE_EN, FAQ_TITLE_ID, LIST_FAQ_EN, LIST_FAQ_ID} from '../../../constants/listFAQ'
-import EachUtils from '../../../utils/EachUtils'
-import {motion} from "framer-motion"
 import { useState } from 'react'
-import InputMembership from '../InputMembership'
+import { motion } from "framer-motion"
+import { languageAtom } from '@/jotai/atoms'
+import { FAQ_TITLE_EN, FAQ_TITLE_ID, LIST_FAQ_EN, LIST_FAQ_ID } from '@/constants/listFAQ'
 
 const SectionFAQ = () => {
     const [language] = useAtom(languageAtom)
     const [openContentIndex, setOpenContentIndex] = useState(null)
-    
+
     return (
         <div className='w-full p-16 bg-black border-t-8 border-t-stone-900'>
             <h2 className='text-5xl mb-8 font-black text-white text-center'>{language == "en" ? FAQ_TITLE_EN : FAQ_TITLE_ID}</h2>

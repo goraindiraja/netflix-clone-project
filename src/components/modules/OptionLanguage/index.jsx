@@ -1,9 +1,9 @@
-import { div } from 'framer-motion/client'
 import React from 'react'
-import EachUtils from '../../../utils/EachUtils'
-import {LIST_LANGUAGE} from '../../../constants/listLanguage'
+import EachUtils from '@/utils/EachUtils'
+
 import { useAtom } from 'jotai'
-import { languageAtom } from '../../../jotai/atoms'
+import { languageAtom } from '@/jotai/atoms'
+import { LIST_LANGUAGE } from '@/constants/listLanguage'
 
 const OptionLanguage = () => {
     const [, setLanguage] = useAtom(languageAtom)
