@@ -6,6 +6,7 @@ import SectionDownload from '../../components/modules/SectionContents/SectionDow
 import SectionWatch from '../../components/modules/SectionContents/SectionWatch'
 import SectionProfile from '../../components/modules/SectionContents/SectionProfile'
 import SectionFAQ from '../../components/modules/SectionContents/SectionFAQ'
+import Footer from '../../components/modules/Footer'
 
 const Landing = () => {
   return (
@@ -16,6 +17,7 @@ const Landing = () => {
         <SectionWatch/>
         <SectionProfile/>
         <SectionFAQ/>
+        <Footer/>
     </DefaultLayout>
   )
 }
