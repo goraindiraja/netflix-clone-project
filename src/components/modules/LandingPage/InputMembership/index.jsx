@@ -1,6 +1,6 @@
 import React from 'react'
 import EachUtils from '@/utils/EachUtils'
-import DefaultButton from '@mods/DefaultButton'
+import DefaultButton from '@mods/LandingPage/DefaultButton'
 
 import { useAtom } from 'jotai'
 import { languageAtom } from '@/jotai/atoms'

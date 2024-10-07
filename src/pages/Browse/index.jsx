@@ -1,11 +1,11 @@
 import React from 'react'
-import DefaultLayout from '@layouts/DefaultLayout'
+import BrowseLayout from '@layouts/BrowseLayout'
 
 const Browse = () => {
   return (
-    <DefaultLayout>
-        <h1>Ini Halaman Browse</h1>
-    </DefaultLayout>
+    <BrowseLayout>
+      {/* Isi Konten Browse */}
+    </BrowseLayout>
   )
 }
 

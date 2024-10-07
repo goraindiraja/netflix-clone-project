@@ -1,6 +1,6 @@
 import React from 'react'
 import EachUtils from '@/utils/EachUtils'
-import OptionLanguage from '@mods/OptionLanguage'
+import OptionLanguage from '@mods/LandingPage/OptionLanguage'
 
 import { useAtom } from 'jotai'
 import { languageAtom } from '@/jotai/atoms'
@@ -19,8 +19,8 @@ const Footer = () => {
                     of={language == "en" ? LIST_FOOTER_EN : LIST_FOOTER_ID}
                     render={(item, index) => (
                         <li>
-                            <a 
-                                href={item.url} 
+                            <a
+                                href={item.url}
                                 className="underline"
                             >
                                 {item.title}
@@ -30,7 +30,7 @@ const Footer = () => {
                 />
             </ul>
 
-            <OptionLanguage/>
+            <OptionLanguage />
             <p className='mt-6'>Netflix Indonesia</p>
         </footer>
     )

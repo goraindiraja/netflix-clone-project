@@ -1,6 +1,6 @@
-import EachUtils from '@/utils/EachUtils'
 import React from 'react'
-import InputMembership from '@mods/InputMembership'
+import EachUtils from '@/utils/EachUtils'
+import InputMembership from '@mods/LandingPage/InputMembership'
 
 import { useAtom } from 'jotai'
 import { languageAtom } from '@/jotai/atoms'
@@ -13,12 +13,12 @@ const Jumbotron = () => {
 
     return (
         <div className='mb-14 sm:mb-52 px-8'>
-            <img 
-                src={JUMBOTRON_IMAGE} 
+            <img
+                src={JUMBOTRON_IMAGE}
                 alt="Jumbotron-img"
                 className='w-full absolute top-0 left-0 object-cover h-[700px] opacity-40'
             />
-            
+
             <EachUtils
                 of={language == "en" ? LIST_JUMBOTRON_EN : LIST_JUMBOTRON_ID}
                 render={(item, index) => (

@@ -1,6 +1,6 @@
 import React from 'react'
 import EachUtils from '@/utils/EachUtils'
-import InputMembership from '@mods/InputMembership'
+import InputMembership from '@mods/LandingPage/InputMembership'
 
 import { useAtom } from 'jotai'
 import { useState } from 'react'
