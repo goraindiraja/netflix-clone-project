@@ -10,7 +10,7 @@ const Jumbotron = () => {
     const [language] = useAtom(languageAtom)
 
     return (
-        <div>
+        <div className='mb-52 px-8'>
             <img 
                 src={JUMBOTRON_IMAGE} 
                 alt="Jumbotron-img"
