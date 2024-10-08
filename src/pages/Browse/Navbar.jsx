@@ -1,14 +1,14 @@
 import React from 'react'
 import EachUtils from '@/utils/EachUtils'
+import AccountMenu from '@mods/BrowsePage/AccountMenu'
+import InputSearchMovies from '@mods/BrowsePage/InputSearchMovies'
 
 import { LIST_NAVBAR } from '@/constants/listNavbar'
-import InputSearchMovies from '@mods/BrowsePage/InputSearchMovies'
-import AccountMenu from '@mods/BrowsePage/AccountMenu'
 
 const Navbar = () => {
     return (
         <header className='relative'>
-            <nav className='bg-transparent fixed text-white top-0 left-0 px-8 w-full z-10'>
+            <nav className='bg-[#141414] fixed text-white top-0 left-0 px-8 w-full z-10'>
                 <div className='flex justify-between items-center'>
                     <div className='flex items-center gap-4'>
                         {/* Sebelah Kiri Nav */}
