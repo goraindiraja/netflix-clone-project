@@ -1,12 +1,15 @@
-import { LIST_VIDEOS } from '@/constants/dummyVideo'
-import EachUtils from '@/utils/EachUtils'
 import React, { useState } from 'react'
+import CarouselLayout from '@layouts/CarouselLayout'
+import EachUtils from '@/utils/EachUtils'
 import MovieCard from '@mods/BrowsePage/MovieCard'
-import CarouselLayout from '@/components/Layouts/CarouselLayout'
+
+import { useAtom } from 'jotai'
+import { idMovieAtom } from '@/jotai/atoms'
+import { LIST_VIDEOS } from '@/constants/dummyVideo'
 
 const MovieList = ({title}) => {
     const [isHover, setIsHover] = useState(false)
-    const [idMovie, setIdMovie] = useState(null)
+    const [, setIdMovie] = useAtom(idMovieAtom)
 
     const handleMouseEnter = (id) => {
         setIsHover(true)
@@ -32,9 +35,7 @@ const MovieList = ({title}) => {
                             <MovieCard 
                                 data={item} 
                                 isHover={isHover} 
-                                idMovie={idMovie} 
                                 setIsHover={setIdMovie} 
-                                setIdMovie={setIdMovie}
                                 onMouseEnter ={()=>handleMouseEnter(item.id)}
                             />
                         </div>
