@@ -8,9 +8,10 @@ const Browse = () => {
   return (
     <BrowseLayout>
       <Jumbotron/>
-      <MovieList title={"Popular Movie"}/>
-      <MovieList title={"Top Rated Movie"}/>
-      <MovieList title={"Upcoming Movie"}/>
+      <MovieList title={"Now Playing"} moviesType={'now_playing'}/>
+      <MovieList title={"Popular Movie"} moviesType={'popular'}/>
+      <MovieList title={"Top Rated Movie"} moviesType={'top_rated'}/>
+      {/* <MovieList title={"Upcoming Movie"} moviesType={'upcoming'}/> */}
       <Modal/>
     </BrowseLayout>
   )

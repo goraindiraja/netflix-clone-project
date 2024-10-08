@@ -1,14 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player'
 
 import { GoPlay,GoPlusCircle,GoChevronDown } from 'react-icons/go'
 import { motion } from 'framer-motion'
 import { useAtom } from 'jotai'
 import { idMovieAtom, isOpenModalAtom } from '@/jotai/atoms'
+import { getVideoURL } from '@/utils/getVideoURL'
 
 const MovieCard = ({ data, isHover, setIsHover, onMouseEnter}) => {
     const [idMovie] = useAtom(idMovieAtom)
-    const [isOpenModal, setIsOpenModal] = useAtom(isOpenModalAtom)
+    const [, setIsOpenModal] = useAtom(isOpenModalAtom)
+    const [videoURL, setVideoURL] = useState(null)
+
+    useEffect(()=> {
+        getVideoURL({movie_id: data.id}).then((result)=> setVideoURL(result))
+    }, [])
+    
     return (
         <>
             {isHover && idMovie === data.id ? (
@@ -19,10 +26,10 @@ const MovieCard = ({ data, isHover, setIsHover, onMouseEnter}) => {
                     className='relative shadow-md cursor-pointer transition-all w-full'
                 >
                     <ReactPlayer
-                        url={data.videoURL}
-                        playing={false}
+                        url={`https://youtube.com/watch?v=${videoURL}`}
+                        playing={true}
                         loop={true}
-                        muted={true}
+                        muted={false}
                         width={"100%"}
                         height={"180px"}
                         controls={false}
@@ -56,7 +63,8 @@ const MovieCard = ({ data, isHover, setIsHover, onMouseEnter}) => {
             ) : (
                     <img
                         onMouseEnter={onMouseEnter}
-                        src={data.image}
+                        src={`${import.meta.env.VITE_BASE_URL_TMDB_IMAGE}${data.poster_path}`}
+                        alt='cover-image'
                         className='w-full max-h-48 cursor-pointer'
                     />
             )

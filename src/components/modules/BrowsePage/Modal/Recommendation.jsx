@@ -1,7 +1,8 @@
-import { LIST_VIDEO_RECOMMENDATION } from '@/constants/dummyVideo'
-import EachUtils from '@/utils/EachUtils'
 import React from 'react'
+import EachUtils from '@/utils/EachUtils'
+
 import { GoPlay } from 'react-icons/go'
+import { LIST_VIDEO_RECOMMENDATION } from '@/constants/dummyVideo'
 
 const Recommendation = () => {
     return (
