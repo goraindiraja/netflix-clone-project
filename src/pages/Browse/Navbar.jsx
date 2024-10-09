@@ -4,8 +4,11 @@ import AccountMenu from '@mods/BrowsePage/AccountMenu'
 import InputSearchMovies from '@mods/BrowsePage/InputSearchMovies'
 
 import { LIST_NAVBAR } from '@/constants/listNavbar'
+import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
+    const navigate = useNavigate()
+
     return (
         <header className='relative'>
             <nav className='bg-[#141414] fixed text-white top-0 left-0 px-8 w-full z-10'>
@@ -14,7 +17,8 @@ const Navbar = () => {
                         {/* Sebelah Kiri Nav */}
                         <img 
                             src='/netflix-logo-icon.png' alt=""
-                            className='w-[120px] -ml-2'
+                            className='w-[120px] -ml-2 cursor-pointer hover:scale-105 transition-all'
+                            onClick={() => navigate("/browse")}
                         />
 
                         <ul className='sm:flex hidden items-center gap-4'>

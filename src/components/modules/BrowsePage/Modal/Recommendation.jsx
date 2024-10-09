@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import EachUtils from '@/utils/EachUtils'
 
+import { useNavigate } from 'react-router-dom'
 import { useAtom } from 'jotai'
 import { GoPlay } from 'react-icons/go'
-import { idMovieAtom } from '@/jotai/atoms'
+import { idMovieAtom, isOpenModalAtom } from '@/jotai/atoms'
 import { getMoviesRecommendation } from '@/utils/getMoviesRecommendation'
+import { getVideoURL } from '@/utils/getVideoURL'
 
 const Recommendation = () => {
+    const navigate = useNavigate()
     const [idMovie, setIdMovie] = useAtom(idMovieAtom)
+    const [,setIsOpenModal] = useAtom(isOpenModalAtom)
     const [moviesRecommendation, setMoviesRecommendation] = useState([])
+    const [videoURL, setVideoURL] = useState(null)
 
     useEffect(()=> {
         if(idMovie){
@@ -24,7 +29,11 @@ const Recommendation = () => {
                 <EachUtils
                     of={moviesRecommendation}
                     render={(item, index)=>(
-                        <div key={index} className='w-full h-auto cursor-pointer rounded-md bg-[#141414]'>
+                        <div 
+                            key={index} 
+                            className='w-full h-auto cursor-pointer rounded-md bg-[#141414]'
+                            onMouseEnter={() => getVideoURL({movie_id: item.id}).then((result)=> setVideoURL(result))}
+                        >
                             <div className='relative'>
                                 <img 
                                     src={import.meta.env.VITE_BASE_URL_TMDB_IMAGE + item.poster_path} 
@@ -32,7 +41,14 @@ const Recommendation = () => {
                                     className='w-full h-48 rounded-t-md'
                                 />
 
-                                <button className='absolute top-10 left-1/2 -translate-x-1/2'>
+                                <button 
+                                    className='absolute top-10 left-1/2 -translate-x-1/2'
+                                    onClick={()=> {
+                                        navigate('/watch/' + videoURL)
+                                        setIsOpenModal(false)
+                                        setIdMovie(null)
+                                    }}
+                                >
                                     <GoPlay size={44}/>
                                 </button>
                             </div>

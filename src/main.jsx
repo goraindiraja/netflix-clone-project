@@ -1,6 +1,7 @@
 import '@/index.css'
 import Landing from '@/pages/Landing/index.jsx'
 import Browse from '@/pages/Browse/index.jsx'
+import Watch from '@/pages/Watch'
 
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: '/browse',
     element: <Browse/>
+  },
+  {
+    path: '/watch/:id',
+    element: <Watch/>
   }
 ])
 

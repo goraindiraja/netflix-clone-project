@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player'
 import Skeleton from '@mods/BrowsePage/MovieCard/Skeleton'
 
-import { GoPlay,GoPlusCircle,GoChevronDown } from 'react-icons/go'
+import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useAtom } from 'jotai'
+import { GoPlay,GoPlusCircle,GoChevronDown } from 'react-icons/go'
 import { idMovieAtom, isFetchingAtom, isOpenModalAtom } from '@/jotai/atoms'
 import { getVideoURL } from '@/utils/getVideoURL'
 
 const MovieCard = ({ data, isHover, setIsHover, onMouseEnter}) => {
+    const navigate = useNavigate()
     const [idMovie] = useAtom(idMovieAtom)
     const [, setIsOpenModal] = useAtom(isOpenModalAtom)
     const [videoURL, setVideoURL] = useState(null)
@@ -44,7 +46,9 @@ const MovieCard = ({ data, isHover, setIsHover, onMouseEnter}) => {
                     <div className='h-auto p-2 bg-[#141414] flex flex-col gap-1.5'>
                         <section className='mt-2 flex justify-between'>
                             <div className='flex gap-2'>
-                                <button>
+                                <button
+                                    onClick={()=> navigate('/watch/' + videoURL)}
+                                >
                                     <GoPlay size={32} />
                                 </button>
                                 <button>

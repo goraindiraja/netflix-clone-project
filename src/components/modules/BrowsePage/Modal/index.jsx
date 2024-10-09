@@ -8,10 +8,12 @@ import { GoPlay, GoPlusCircle } from 'react-icons/go'
 import { idMovieAtom, isOpenModalAtom } from '@/jotai/atoms'
 import { getMovieDetail } from '@/utils/getMovieDetail'
 import { getVideoURL } from '@/utils/getVideoURL'
+import { useNavigate } from 'react-router-dom'
 
 const Modal = () => {
+    const navigate = useNavigate()
     const [isOpenModal, setIsOpenModal] = useAtom(isOpenModalAtom)
-    const [idMovie] = useAtom(idMovieAtom)
+    const [idMovie, setIdMovie] = useAtom(idMovieAtom)
     const [movieDetail, setMovieDetail] = useState([])
     const [videoURL, setVideoURL] = useState(null)
 
@@ -62,7 +64,17 @@ const Modal = () => {
                     </div>
                     <div className='absolute bottom-1/2 translate-y-14 left-10'>
                         <div className='flex gap-2'>
-                            <button className='hover:text-slate-50 bg-slate-50 w-32 text-black font-bold text-xl flex items-center justify-center gap-4 p-1.5 rounded-md'>
+                            <button 
+                                className='hover:text-slate-50 bg-slate-50 w-32 text-black font-bold text-xl flex items-center justify-center gap-4 p-1.5 rounded-md'
+                                
+                                onClick={() => {
+                                    navigate('/watch/' + videoURL)
+                                    setIsOpenModal(false)
+                                    setVideoURL(null)
+                                    setMovieDetail([])
+                                    setIdMovie(null)
+                                }}
+                            >
                                 <GoPlay size={32}/>
                                 Play
                             </button>
