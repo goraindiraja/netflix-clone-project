@@ -1,20 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player'
+import Skeleton from '@mods/BrowsePage/MovieCard/Skeleton'
 
 import { GoPlay,GoPlusCircle,GoChevronDown } from 'react-icons/go'
 import { motion } from 'framer-motion'
 import { useAtom } from 'jotai'
-import { idMovieAtom, isOpenModalAtom } from '@/jotai/atoms'
+import { idMovieAtom, isFetchingAtom, isOpenModalAtom } from '@/jotai/atoms'
 import { getVideoURL } from '@/utils/getVideoURL'
 
 const MovieCard = ({ data, isHover, setIsHover, onMouseEnter}) => {
     const [idMovie] = useAtom(idMovieAtom)
     const [, setIsOpenModal] = useAtom(isOpenModalAtom)
     const [videoURL, setVideoURL] = useState(null)
+    const [isFetching] = useAtom(isFetchingAtom)
 
     useEffect(()=> {
-        getVideoURL({movie_id: data.id}).then((result)=> setVideoURL(result))
-    }, [])
+        if(idMovie && data){
+            getVideoURL({movie_id: data.id}).then((result)=> setVideoURL(result))
+        }
+    }, [idMovie, data])
+
+    if(isFetching) return <Skeleton/>
     
     return (
         <>

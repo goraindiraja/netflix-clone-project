@@ -13,7 +13,7 @@ const Navbar = () => {
                     <div className='flex items-center gap-4'>
                         {/* Sebelah Kiri Nav */}
                         <img 
-                            src='/public/netflix-logo-icon.png' alt=""
+                            src='/netflix-logo-icon.png' alt=""
                             className='w-[120px] -ml-2'
                         />
 

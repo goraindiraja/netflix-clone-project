@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import EachUtils from '@/utils/EachUtils'
 import MovieCard from '@mods/BrowsePage/MovieCard'
 
-import { idMovieAtom, searchMoviesAtom } from '@/jotai/atoms'
+import { idMovieAtom, isFetchingAtom, searchMoviesAtom } from '@/jotai/atoms'
 import { useAtom } from 'jotai'
 import { searchMovies } from '@/utils/searchMovies'
 
@@ -11,6 +11,7 @@ const SearchMovies = () => {
     const [, setIdMovie] = useAtom(idMovieAtom)
     const [movieList, setMovieList] = useState([])
     const [searchQuery] = useAtom(searchMoviesAtom)
+    const [, setIsFetching] = useAtom(isFetchingAtom)
 
     const handleMouseEnter = (id) => {
         setIsHover(true)
@@ -19,7 +20,14 @@ const SearchMovies = () => {
 
     useEffect(() => {
         if(searchQuery){
-            searchMovies({query: searchQuery}).then(result => setMovieList(result))
+            searchMovies({query: searchQuery}).then(result => {
+                setMovieList(result)
+                setIsFetching(true)
+            }).finally(()=> {
+                setTimeout(() => {
+                    setIsFetching(false)
+                }, 1000)
+            })
         }
     }, [searchQuery])
     return (

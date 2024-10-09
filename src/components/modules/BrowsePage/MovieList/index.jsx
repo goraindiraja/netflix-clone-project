@@ -4,12 +4,13 @@ import EachUtils from '@/utils/EachUtils'
 import MovieCard from '@mods/BrowsePage/MovieCard'
 
 import { useAtom } from 'jotai'
-import { idMovieAtom } from '@/jotai/atoms'
+import { idMovieAtom, isFetchingAtom } from '@/jotai/atoms'
 import { getMoviesByType } from '@/utils/getMoviesByType'
 
 const MovieList = ({title, moviesType}) => {
     const [isHover, setIsHover] = useState(false)
     const [, setIdMovie] = useAtom(idMovieAtom)
+    const [, setIsFetching] = useAtom(isFetchingAtom)
     const [movieList, setMovieList] = useState([])
 
     const handleMouseEnter = (id) => {
@@ -18,8 +19,17 @@ const MovieList = ({title, moviesType}) => {
     }
 
     useEffect(() => {
-        getMoviesByType({moviesType}).then((result) => setMovieList(result))
-    }, [])
+        if(moviesType){
+            getMoviesByType({moviesType}).then((result) => {
+                setIsFetching(true)
+                setMovieList(result)
+            }).finally(() => {
+                setTimeout(() => {
+                    setIsFetching(false)
+                }, 1000)
+            })
+        }
+    }, [moviesType])
 
     return (
         <section className='px-8 py-8'>

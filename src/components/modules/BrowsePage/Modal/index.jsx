@@ -16,13 +16,12 @@ const Modal = () => {
     const [videoURL, setVideoURL] = useState(null)
 
     useEffect(()=> {
-        if(idMovie) {
+        if(idMovie && isOpenModal) {
             getMovieDetail({movie_id: idMovie}).then((result)=> setMovieDetail(result))
 
             getVideoURL({ movie_id: idMovie }).then((result) => setVideoURL(result))
         }
-
-    }, [idMovie])
+    }, [idMovie, isOpenModal])
 
     const genreMapping = (genres) => {
         let result = ""
